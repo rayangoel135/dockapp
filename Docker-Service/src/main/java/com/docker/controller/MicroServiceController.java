@@ -23,7 +23,7 @@ public static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger(
 @Qualifier("docker")
 private Properties dockerProperties; 
 
-@Scheduled(fixedRate = 5000)
+//@Scheduled(fixedRate = 5000)
 @RequestMapping(value="/dockertest",method = RequestMethod.GET)
 public ResponseEntity<String> testDockerService() {
 LOGGER.info("this is test Rayan Rayan");

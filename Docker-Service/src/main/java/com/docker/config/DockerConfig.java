@@ -7,11 +7,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import com.docker.controller.MicroServiceController;
 
 @Configuration
-@EnableWebSecurity
+//@EnableWebSecurity
 @ComponentScan(basePackages = {"com.docker.controller","com.docker"})
 public class DockerConfig {
 
@@ -36,11 +35,6 @@ public Properties getProperties() {
 	Properties prop = new Properties();
 	prop.put("usrname", env.getProperty("usrname"));
 	prop.put("pass", env.getProperty("pass"));
-	return prop;
-	
+	return prop;	
 }
-
-
-
-
 }
