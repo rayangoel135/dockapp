@@ -49,7 +49,7 @@ return new ResponseEntity<String>("test",HttpStatus.OK);
 }
 
 private void uploadFileToS3() {
-	S3Util.uploadFile();
+	//S3Util.uploadFile();
 	
 	
 }
