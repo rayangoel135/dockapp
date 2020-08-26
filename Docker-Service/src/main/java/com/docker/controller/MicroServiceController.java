@@ -3,7 +3,9 @@ package com.docker.controller;
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.Properties;
+import java.util.logging.LogManager;
 
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -14,10 +16,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.docker.util.S3Util;
+
 @Component
 @Controller
 public class MicroServiceController {
-public static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger(MicroServiceController.class);
+public static final Logger LOGGER = org.apache.logging.log4j.LogManager.getLogger(MicroServiceController.class);
 
 @Autowired
 @Qualifier("docker")
@@ -32,14 +36,22 @@ Optional<Integer> num = Arrays.asList(1,2,3,4).stream().max((a,b)->  {
 	if(a.compareTo(b) == 0) return 0;
 	else return -1;
 });
+LOGGER.info("username is -",dockerProperties.getProperty("usrname"));
+LOGGER.info("password is -",dockerProperties.getProperty("usrname"));
+
+
 System.out.println(num.get());
 System.out.println(dockerProperties.getProperty("usrname"));
 System.out.println(dockerProperties.getProperty("pass"));
 
-
+//uploadFileToS3();
 return new ResponseEntity<String>("test",HttpStatus.OK);
 }
 
-
+private void uploadFileToS3() {
+	S3Util.uploadFile();
+	
+	
+}
 
 }
