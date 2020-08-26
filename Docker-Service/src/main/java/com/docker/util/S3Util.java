@@ -20,9 +20,8 @@ public class S3Util {
 
 	public static void uploadFile() {
 
-		AWSCredentials credentials = new BasicAWSCredentials("AKIA6HGYQIJH5LEMDOE6",
-				"ecYpGFxQJiHNkvcOSID72VD5FfHDBgV3vsfNa2SM");
-
+	/*
+        
 		// create a client connection based on credentials
 		AmazonS3 s3client = new AmazonS3Client(credentials);
 
@@ -49,7 +48,9 @@ public class S3Util {
 
 		} catch (IOException e) {
 			e.printStackTrace();
+	
 		}
+		*/
 	}
 
 	public static void createFolder(String bucketName, String folderName, AmazonS3 client) {
