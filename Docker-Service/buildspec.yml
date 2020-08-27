@@ -15,7 +15,7 @@ phases:
       - mv target/Docker-Service-0.0.1-SNAPSHOT-shaded.jar
       - unzip Docker-Service-0.0.1-SNAPSHOT-shaded.jar
       - rm -rf target tst src buildspec.yml pom.xml Docker-Service-0.0.1-SNAPSHOT-shaded.jar
-      - aws cloudformation package --template-file template.yml --s3-bucket $BUCKET --output-template-file outputtemplate.yml
+      - aws cloudformation package --template-file samTemplate.yaml --s3-bucket $BUCKET --output-template-file outputtemplate.yaml
   post_build:
     commands:
       - echo Build completed on `date` !!!
@@ -23,8 +23,8 @@ artifacts:
   type: zip
   files:
     - target/Docker-Service-0.0.1-SNAPSHOT-shaded.jar
-    - template.yml
-    - outputtemplate.yml
+    - samTemplate.yaml
+    - outputtemplate.yaml
 
 
 
