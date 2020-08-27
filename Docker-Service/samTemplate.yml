@@ -15,8 +15,12 @@ Resources:
           Properties:
             Path: /client
             Method: GET
-        -schedule:
+        schedule:
           name: my scheduled event
           description: my scheduled event
           rate: rate(10 minutes)
           enabled: false  
+      Environment:
+       Variables :
+        REGION:ap-southeast-2
+           
