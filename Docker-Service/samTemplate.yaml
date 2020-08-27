@@ -10,12 +10,12 @@ Resources:
       Timeout: 900
       CodeUri: ./
       Events:
-        MyFtcClientApi:
+       GetEvent:
           Type: Api
           Properties:
             Path: /client
             Method: GET
-        schedule:
+       schedule:
           name: my scheduled event
           description: my scheduled event
           rate: rate(10 minutes)
