@@ -1,29 +1,30 @@
 version: 0.2
-
 phases:
   install:
     runtime-versions:
       java: openjdk8
+  pre_build:
+    commands:
+      - echo Test started on `date`
+      - mvn clean compile test
   build:
     commands:
       - echo Build started on `date`
-      - mvn test
       - export BUCKET=testdockertest
+      - mvn package shade:shade
+      - mv target/Docker-Service-0.0.1-SNAPSHOT-shaded.jar
+      - unzip Docker-Service-0.0.1-SNAPSHOT-shaded.jar
+      - rm -rf target tst src buildspec.yml pom.xml Docker-Service-0.0.1-SNAPSHOT-shaded.jar
       - aws cloudformation package --template-file template.yml --s3-bucket $BUCKET --output-template-file outputtemplate.yml
-    finally:
-      - echo THE PATH WORK IS !!!
-      - pwd
-      - echo The list of file is !!
-      - ls
-      - echo CODE BUILD SRC DIRECTORY
-      - echo $CODEBUILD_SRC_DIR
   post_build:
     commands:
-      - echo Build completed on `date`
-      - mvn package
+      - echo Build completed on `date` !!!
 artifacts:
   files:
     - target/Docker-Service-0.0.1-SNAPSHOT-shaded.jar
     - template.yml
     - outputtemplate.yml
-  discard-paths: yes
+
+
+
+
