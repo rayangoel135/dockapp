@@ -20,6 +20,7 @@ phases:
     commands:
       - echo Build completed on `date` !!!
 artifacts:
+  type: zip
   files:
     - target/Docker-Service-0.0.1-SNAPSHOT-shaded.jar
     - template.yml
