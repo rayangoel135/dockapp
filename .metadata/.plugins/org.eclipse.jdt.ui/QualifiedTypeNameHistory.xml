@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.amazonaws.handlers.RequestHandler"/>
+    <fullyQualifiedTypeName name="com.amazonaws.services.lambda.runtime.RequestHandler"/>
+    <fullyQualifiedTypeName name="com.docker.entity.Request"/>
+    <fullyQualifiedTypeName name="com.docker.entity.Response"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.docker.controller.MicroServiceController"/>
+    <fullyQualifiedTypeName name="org.apache.logging.log4j.Logger"/>
+    <fullyQualifiedTypeName name="java.util.logging.LogManager"/>
+    <fullyQualifiedTypeName name="org.apache.logging.log4j.LogManager"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,8 @@
+package snippet;
+
+public class Snippet {
+	public static void main(String[] args) {
+		OGGER.info("username is -",dockerProperties.getProperty("usrname"));
+	}
+}
+

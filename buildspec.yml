@@ -1,0 +1,30 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      java: openjdk8
+  pre_build:
+    commands:
+      - echo Test started on `date`
+      - mvn clean compile test
+  build:
+    commands:
+      - echo Build started on `date`
+      - export BUCKET=testdockertest
+      - mvn package shade:shade
+      - mv target/Docker-Service-0.0.1-SNAPSHOT.jar
+      - unzip Docker-Service-0.0.1-SNAPSHOT.jar
+      - rm -rf target tst src buildspec.yml pom.xml Docker-Service-0.0.1-SNAPSHOT.jar
+      - aws cloudformation package --template-file samTemplate.yaml --s3-bucket $BUCKET --output-template-file outputtemplate.yaml
+  post_build:
+    commands:
+      - echo Build completed on `date` !!!
+artifacts:
+  files:
+    - target/Docker-Service-0.0.1-SNAPSHOT.jar
+    - samTemplate.yaml
+    - outputtemplate.yaml
+
+
+
+

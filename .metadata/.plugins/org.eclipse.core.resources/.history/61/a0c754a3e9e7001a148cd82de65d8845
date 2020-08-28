@@ -1,0 +1,29 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: openjdk8
+  build:
+    commands:
+      - echo Build started on `date`
+      - mvn test
+      - export BUCKET=my-bucket-for-test
+      - aws cloudformation package --template-file template.yml --s3-bucket $BUCKET --output-template-file outputtemplate.yml
+    finally:
+      - echo THE PATH WORK IS !!!
+      - pwd
+      - echo The list of file is !!
+      - ls
+      - echo CODE BUILD SRC DIRECTORY
+      - echo $CODEBUILD_SRC_DIR
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - mvn package
+artifacts:
+  files:
+    - target/Docker-Service-0.0.1-SNAPSHOT.jar
+    - template.yml
+    - outputtemplate.yml
+  discard-paths: yes

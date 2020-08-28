@@ -1,0 +1,21 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Ftc-client
+Resources:
+  FtcClientFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: com.docker.lambda.LambdaHandler::handleRequest
+      Runtime: java8
+      CodeUri: ./
+      Events:
+        MyFtcClientApi:
+          Type: Api
+          Properties:
+            Path: /client
+            Method: GET
+          - schedule:
+          name: my scheduled event
+          description: my scheduled event
+          rate: rate(10 minutes)
+          enabled: false  
