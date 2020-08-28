@@ -3,22 +3,22 @@ Transform: AWS::Serverless-2016-10-31
 Resources:
   CreateScheduler :
     Type: AWS::Serverless::Function
-    Handler: com.docker.lambda.LambdaHandler::handleRequest
     Events:
      CheckWebsiteScheduledEvent:
       Type: Schedule
       Properties:
+       Handler: com.docker.lambda.LambdaHandler::handleRequest
        Schedule: rate(1 minute)
        Runtime: JAVA8
        Timeout: 900
        CodeUri: ./     
   CreateApi :
     Type: AWS::Serverless::Function
-    Handler: com.docker.lambda.LambdaAPIHandler::handleRequest
     Events:
      GetEvent:
       Type: Api
       Properties:
+        Handler: com.docker.lambda.LambdaAPIHandler::handleRequest
         Path: /
         Method: GET
         Runtime: JAVA8
