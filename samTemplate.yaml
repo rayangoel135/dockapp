@@ -2,25 +2,31 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Resources:
   CheckWebsitePeriodically:
-    Type: AWS::Serverless::Function
-    Properties:
-      Handler: com.docker.lambda.LambdaHandler::handleRequest
-      Runtime: JAVA8
-      Timeout: 900
-      CodeUri: ./
+   Type: AWS::Serverless::Function
+  CreateScheduler :
+    Handler: com.docker.lambda.LambdaHandler::handleRequest
     Events:
-       CheckWebsiteScheduledEvent:
-          Type: Schedule
-          Properties:
-            Schedule: rate(1 minute)
-       GetEvent:
-          Type: Api
-          Properties:
-            Path: /client
-            Method: GET
-       Environment:
+     CheckWebsiteScheduledEvent:
+      Type: Schedule
+      Properties:
+       Schedule: rate(1 minute)
+       Runtime: JAVA8
+       Timeout: 900
+       CodeUri: ./     
+  CreateApi :
+    Handler: com.docker.lambda.LambdaAPIHandler::handleRequest
+    Events:
+     GetEvent:
+      Type: Api
+      Properties:
+        Path: /
+        Method: GET
+        Runtime: JAVA8
+        Timeout: 900
+        CodeUri: ./  
+     Environment:
        Variables :
-        REGION:ap-southeast-2   
+         REGION:ap-southeast-2   
 
 
 

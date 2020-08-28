@@ -2,14 +2,14 @@ package com.docker.entity;
 
 public class Request {
 
-private String reqTyoe;
+private String reqType;
 
 public String getReqTyoe() {
-	return reqTyoe;
+	return reqType;
 }
 
-public void setReqTyoe(String reqTyoe) {
-	this.reqTyoe = reqTyoe;
+public void setReqType(String reqType) {
+	this.reqType = reqType;
 }
 
 
