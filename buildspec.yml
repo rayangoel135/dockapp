@@ -15,7 +15,7 @@ phases:
       - mv target/Docker-Service-0.0.1-SNAPSHOT.jar .
       - unzip Docker-Service-0.0.1-SNAPSHOT.jar
       - rm -rf target tst src buildspec.yml pom.xml Docker-Service-0.0.1-SNAPSHOT.jar
-      - aws cloudformation package --template-file samTemplate.yaml --s3-bucket $BUCKET --output-template-file outputtemplate.yaml
+      - aws cloudformation package --template-file samTemplate.yaml --s3-bucket $BUCKET --output-template-file outputtemplate.yaml --capabilities CAPABILITY_IAM
   post_build:
     commands:
       - echo Build completed on `date` !!!
