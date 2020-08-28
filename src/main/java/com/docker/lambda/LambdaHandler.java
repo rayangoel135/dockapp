@@ -9,12 +9,12 @@ import com.docker.controller.MicroServiceController;
 import com.docker.entity.Request;
 import com.docker.entity.Response;
 
-public class LambdaHandler implements RequestHandler<Request, Response>{
+public class LambdaHandler implements RequestHandler<Void, Response>{
 	private static final Logger LOGGER = org.apache.logging.log4j.LogManager.getLogger(LambdaHandler.class);
 	@Autowired
 	private MicroServiceController controller;
 	@Override
-	public Response handleRequest(Request input, Context context) {
+	public Response handleRequest(Void input, Context context) {
 		// TODO Auto-generated method stub
 		LOGGER.info("Inside lambda");
 		controller.testDockerService();

@@ -13,6 +13,11 @@ Resources:
           Type: Schedule
           Properties:
             Schedule: rate(1 minute)
+       GetEvent:
+          Type: Api
+          Properties:
+            Path: /client
+            Method: GET
        Environment:
        Variables :
         REGION:ap-southeast-2   
