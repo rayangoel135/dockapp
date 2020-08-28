@@ -8,7 +8,7 @@ Resources:
       Runtime: JAVA8
       Timeout: 900
       CodeUri: ./
-      Events:
+    Events:
        CheckWebsiteScheduledEvent:
           Type: Schedule
           Properties:
