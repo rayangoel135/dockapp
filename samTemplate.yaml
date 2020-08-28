@@ -1,9 +1,8 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Resources:
-  CheckWebsitePeriodically:
-   Type: AWS::Serverless::Function
   CreateScheduler :
+    Type: AWS::Serverless::Function
     Handler: com.docker.lambda.LambdaHandler::handleRequest
     Events:
      CheckWebsiteScheduledEvent:
@@ -14,6 +13,7 @@ Resources:
        Timeout: 900
        CodeUri: ./     
   CreateApi :
+    Type: AWS::Serverless::Function
     Handler: com.docker.lambda.LambdaAPIHandler::handleRequest
     Events:
      GetEvent:
