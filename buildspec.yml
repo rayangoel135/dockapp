@@ -16,8 +16,9 @@ phases:
       - cp target/Docker-Service-0.0.1-SNAPSHOT.jar artifcts/
       - cd artifcts
       - ls -ltr
-      - unzip docker-Service-0.0.1-SNAPSHOT.jar
-      - rm artifcts/Docker-Service-0.0.1-SNAPSHOT.jar
+      - unzip Docker-Service-0.0.1-SNAPSHOT.jar
+      - rm Docker-Service-0.0.1-SNAPSHOT.jar
+      - cd ..
       - rm -rf tst src buildspec.yml pom.xml
       - aws cloudformation package --template-file samTemplate.yaml --s3-bucket $BUCKET --output-template-file outputtemplate.yaml 
   post_build:
