@@ -6,7 +6,7 @@ Resources:
     Properties:
        Handler: com.docker.lambda.LambdaHandler::handleRequest
        Role: arn:aws:iam::977559110223:role/service-role/MyLambda
-       Runtime: JAVA8
+       Runtime: java8
        Timeout: 900
        CodeUri: ./    
        Events:
@@ -19,7 +19,7 @@ Resources:
     Properties:
        Handler: com.docker.lambda.LambdaAPIHandler::handleRequest
        Role: arn:aws:iam::977559110223:role/service-role/MyLambda
-       Runtime: JAVA8
+       Runtime: java8
        Timeout: 900
        CodeUri: ./    
        Events:
