@@ -1,5 +1,0 @@
-package com.docker.entity;
-
-public class Request {
-
-}

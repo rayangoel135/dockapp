@@ -1,7 +1,8 @@
+com/docker/lambda/LambdaAPIHandler.class
+com/docker/controller/MicroServiceController.class
+com/docker/entity/Request.class
 com/docker/config/DockerConfig.class
 com/docker/util/S3Util.class
-com/docker/controller/MicroServiceController.class
 com/docker/lambda/LambdaHandler.class
 com/docker/DockerServiceApplication.class
-com/docker/entity/Request.class
 com/docker/entity/Response.class
