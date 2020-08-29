@@ -5,31 +5,30 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
        Handler: com.docker.lambda.LambdaHandler::handleRequest
+       Role: arn:aws:iam::977559110223:role/service-role/MyLambda
        Runtime: JAVA8
        Timeout: 900
        CodeUri: ./    
-    Events:
-     CheckWebsiteScheduledEvent:
-      Type: Schedule
-      Properties:
-       Schedule: rate(1 minute)
+       Events:
+        CheckWebsiteScheduledEvent:
+         Type: Schedule
+         Properties:
+          Schedule: rate(1 minute)
   CreateApi :
     Type: AWS::Serverless::Function
     Properties:
        Handler: com.docker.lambda.LambdaAPIHandler::handleRequest
+       Role: arn:aws:iam::977559110223:role/service-role/MyLambda
        Runtime: JAVA8
        Timeout: 900
        CodeUri: ./    
-    Events:
-     GetEvent:
-      Type: Api
-      Properties:
-        Path: /
-        Method: GET
-     Environment:
-       Variables :
-         REGION:ap-southeast-2   
-
+       Events:
+        GetEvent:
+         Type: Api
+         Properties:
+          Path: /
+          Method: GET
+     
 
 
 
