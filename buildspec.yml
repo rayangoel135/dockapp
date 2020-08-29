@@ -14,7 +14,9 @@ phases:
       - mvn package shade:shade
       - mkdir artifcts
       - cp target/Docker-Service-0.0.1-SNAPSHOT.jar artifcts/
-      - unzip artifcts/docker-Service-0.0.1-SNAPSHOT.jar
+      - cd artifcts
+      - ls -ltr
+      - unzip docker-Service-0.0.1-SNAPSHOT.jar
       - rm artifcts/Docker-Service-0.0.1-SNAPSHOT.jar
       - rm -rf tst src buildspec.yml pom.xml
       - aws cloudformation package --template-file samTemplate.yaml --s3-bucket $BUCKET --output-template-file outputtemplate.yaml 
