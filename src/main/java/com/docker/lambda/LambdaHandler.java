@@ -2,6 +2,7 @@ package com.docker.lambda;
 
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 
@@ -19,12 +20,13 @@ public class LambdaHandler implements RequestHandler<Void, Response>{
 	private static final Logger LOGGER = org.apache.logging.log4j.LogManager.getLogger(LambdaHandler.class);
 	//@Autowired
 //	private MicroServiceController controller;
-	@Override
+	private ApplicationContext springContext;
+	
 	public Response handleRequest(Void input, Context context) {
 		// TODO Auto-generated method stub
 		DockerServiceApplication.main(new String[] {});
-		AnnotationConfigApplicationContext cont = new AnnotationConfigApplicationContext(DockerConfig.class);		
-		MicroServiceController controller = cont.getBean(MicroServiceController.class);
+		//AnnotationConfigApplicationContext cont = new AnnotationConfigApplicationContext(DockerConfig.class);		
+		MicroServiceController controller = springContext.getBean(MicroServiceController.class);
 		LOGGER.info("Inside lambda");
 		controller.testDockerService();
 		return new Response("success");
@@ -35,4 +37,8 @@ public class LambdaHandler implements RequestHandler<Void, Response>{
 		this.handleRequest(null, null);
 	}
 	*/
+	
+    public void setApplicationContext(ApplicationContext applicationContext) {
+        this.springContext = applicationContext;
+    }
 }
