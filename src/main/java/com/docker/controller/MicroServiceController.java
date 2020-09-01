@@ -42,7 +42,7 @@ Optional<Integer> num = Arrays.asList(1,2,3,4).stream().max((a,b)->  {
 });
 LOGGER.info("username is -",env.getProperty("usrname"));
 LOGGER.info("password is -",env.getProperty("usrname"));
-
+LOGGER.info("this is great");
 
 System.out.println(num.get());
 System.out.println(env.getProperty("usrname"));
