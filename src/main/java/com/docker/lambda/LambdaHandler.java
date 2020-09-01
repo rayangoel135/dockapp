@@ -17,8 +17,8 @@ import org.springframework.scheduling.annotation.Scheduled;
 @Service
 public class LambdaHandler implements RequestHandler<Void, Response>{
 	private static final Logger LOGGER = org.apache.logging.log4j.LogManager.getLogger(LambdaHandler.class);
-	@Autowired
-	private MicroServiceController controller;
+	//@Autowired
+//	private MicroServiceController controller;
 	@Override
 	public Response handleRequest(Void input, Context context) {
 		// TODO Auto-generated method stub
