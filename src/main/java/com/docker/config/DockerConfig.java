@@ -8,10 +8,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import com.docker.controller.MicroServiceController;
+import com.docker.lambda.LambdaHandler;
 
 @Configuration
 //@EnableWebSecurity
-@ComponentScan(basePackages = {"com.docker.controller","com.docker"})
+@ComponentScan(basePackages = {"com.docker.controller","com.docker","com.docker.lambda"})
 public class DockerConfig {
 
 //@Autowired
@@ -37,4 +38,6 @@ public Properties getProperties() {
 	prop.put("pass", env.getProperty("pass"));
 	return prop;	
 }
+
+
 }
