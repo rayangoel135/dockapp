@@ -9,8 +9,10 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
@@ -25,9 +27,9 @@ public class MicroServiceController {
 public static final Logger LOGGER = org.apache.logging.log4j.LogManager.getLogger(MicroServiceController.class);
 
 @Autowired
-@Lazy
-@Qualifier("docker")
-private Properties dockerProperties; 
+private Environment env;
+//@Qualifier("docker")
+//private Properties dockerProperties; 
 
 //@Scheduled(fixedRate = 5000)
 @RequestMapping(value="/dockertest",method = RequestMethod.GET)
@@ -38,13 +40,13 @@ Optional<Integer> num = Arrays.asList(1,2,3,4).stream().max((a,b)->  {
 	if(a.compareTo(b) == 0) return 0;
 	else return -1;
 });
-LOGGER.info("username is -",dockerProperties.getProperty("usrname"));
-LOGGER.info("password is -",dockerProperties.getProperty("usrname"));
+LOGGER.info("username is -",env.getProperty("usrname"));
+LOGGER.info("password is -",env.getProperty("usrname"));
 
 
 System.out.println(num.get());
-System.out.println(dockerProperties.getProperty("usrname"));
-System.out.println(dockerProperties.getProperty("pass"));
+System.out.println(env.getProperty("usrname"));
+System.out.println(env.getProperty("pass"));
 
 //uploadFileToS3();
 return new ResponseEntity<String>("test",HttpStatus.OK);

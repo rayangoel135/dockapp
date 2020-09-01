@@ -22,11 +22,17 @@ public class LambdaHandler implements RequestHandler<Void, Response>{
 	@Override
 	public Response handleRequest(Void input, Context context) {
 		// TODO Auto-generated method stub
-		//DockerServiceApplication.main(new String[] {});
+		DockerServiceApplication.main(new String[] {});
 		AnnotationConfigApplicationContext cont = new AnnotationConfigApplicationContext(DockerConfig.class);		
 		MicroServiceController controller = cont.getBean(MicroServiceController.class);
 		LOGGER.info("Inside lambda");
 		controller.testDockerService();
 		return new Response("success");
 	}
+	/*
+	@Scheduled(fixedRate = 5000)
+	private void func() {
+		this.handleRequest(null, null);
+	}
+	*/
 }
