@@ -18,15 +18,12 @@ import org.springframework.scheduling.annotation.Scheduled;
 @Service
 public class LambdaHandler implements RequestHandler<Void, Response>{
 	private static final Logger LOGGER = org.apache.logging.log4j.LogManager.getLogger(LambdaHandler.class);
-	//@Autowired
-//	private MicroServiceController controller;
-	private ApplicationContext springContext;
-	
+
 	public Response handleRequest(Void input, Context context) {
 		// TODO Auto-generated method stub
 		DockerServiceApplication.main(new String[] {});
-		//AnnotationConfigApplicationContext cont = new AnnotationConfigApplicationContext(DockerConfig.class);		
-		MicroServiceController controller = springContext.getBean(MicroServiceController.class);
+		AnnotationConfigApplicationContext cont = new AnnotationConfigApplicationContext(DockerConfig.class);		
+  	MicroServiceController controller = cont.getBean(MicroServiceController.class);
 		LOGGER.info("Inside lambda");
 		controller.testDockerService();
 		return new Response("success");
@@ -38,7 +35,5 @@ public class LambdaHandler implements RequestHandler<Void, Response>{
 	}
 	*/
 	
-    public void setApplicationContext(ApplicationContext applicationContext) {
-        this.springContext = applicationContext;
-    }
+  
 }
