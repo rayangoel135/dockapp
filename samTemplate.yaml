@@ -14,6 +14,9 @@ Resources:
          Type: Schedule
          Properties:
           Schedule: rate(1 minute)
+          Environment:
+           Variables:
+             Bucket_Name: test
   CreateApi :
     Type: AWS::Serverless::Function
     Properties:
@@ -28,6 +31,9 @@ Resources:
          Properties:
           Path: /
           Method: GET
+          Environment:
+           Variables:
+             Bucket_Name: test  
      
 
 

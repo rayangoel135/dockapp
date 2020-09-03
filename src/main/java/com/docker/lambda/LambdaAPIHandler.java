@@ -14,7 +14,8 @@ public class LambdaAPIHandler implements RequestHandler<Void, com.docker.entity.
 	public Response handleRequest(Void input, Context context) {
 		// TODO Auto-generated method stub
 		DockerServiceApplication.main(new String[] {});
-		return new Response("Success");
+		
+		return new Response("BucketName" + System.getenv("Bucket_Name"));
 	}
 
 }
