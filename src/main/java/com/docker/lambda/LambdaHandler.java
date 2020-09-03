@@ -25,7 +25,11 @@ public class LambdaHandler implements RequestHandler<Void, Response>{
 		AnnotationConfigApplicationContext cont = new AnnotationConfigApplicationContext(DockerConfig.class);		
   	MicroServiceController controller = cont.getBean(MicroServiceController.class);
 		LOGGER.info("Inside lambda");
-		LOGGER.info("Bucket Name",System.getenv("Bucket_Name"));
+		LOGGER.info("Bucket Name : ",System.getenv("Bucket_Name"));
+		LOGGER.info("Bucket Name : ",System.getProperty("Bucket_Name"));
+		LOGGER.info("Bucket Name : ",System.getProperty("Name"));
+		
+
 		controller.testDockerService();
 		return new Response("success");
 	}
