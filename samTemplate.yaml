@@ -1,14 +1,22 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Parameters:
- BUCKET_NAME:
-  Description: 'Required. The Database username'
-  Type: 'AWS::SSM::Parameter::Value<String>'
-  Default: 'mybucket' 
- BUCKET_KEY:
-  Description: 'Required. The Database password'
-  Type: 'AWS::SSM::Parameter::Value<String>'
-  Default: 'Mybucketkey' 
+ Name:
+  Description: Bucket Name
+  Type: String
+  Default: mybucket 
+ ObjectKey:
+  Description: Bucket Key
+  Type: String
+  Default: Mybucketkey 
+  
+Globals:
+  Environment:
+   Variables:
+    Bucket_Name: !Ref Name
+    key : !Ref ObjectKey
+    
+
 Resources:
   CreateScheduler :
     Type: AWS::Serverless::Function
@@ -23,9 +31,6 @@ Resources:
          Type: Schedule
          Properties:
           Schedule: rate(1 minute)
-          Environment:
-           Variables:
-             Bucket_Name: !Ref BUCKET_NAME
   CreateApi :
     Type: AWS::Serverless::Function
     Properties:
@@ -40,9 +45,7 @@ Resources:
          Properties:
           Path: /
           Method: GET
-          Environment:
-           Variables:
-             Bucket_Name: !Ref BUCKET_NAME 
+          
      
 
 
