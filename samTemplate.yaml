@@ -13,6 +13,7 @@ Parameters:
 Globals:
  Function:
   Environment:
+   Variables:
    Bucket_Name: !Ref Name
    key : !Ref ObjectKey
     
