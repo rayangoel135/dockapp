@@ -11,11 +11,10 @@ Parameters:
   Default: Mybucketkey 
   
 Globals:
- Function:
   Environment:
    Variables:
-   Bucket_Name: !Ref Name
-   key : !Ref ObjectKey
+    Bucket_Name: !Ref Name
+    key : !Ref ObjectKey
     
 
 Resources:
