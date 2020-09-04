@@ -27,8 +27,8 @@ import com.docker.util.S3Util;
 public class MicroServiceController {
 public static final Logger LOGGER = org.apache.logging.log4j.LogManager.getLogger(MicroServiceController.class);
 
-@Autowired
-private Environment env;
+//@Autowired
+//private Environment env;
 //@Qualifier("docker")
 //private Properties dockerProperties; 
 
@@ -45,15 +45,16 @@ LOGGER.info("username is -",System.getenv("key"));
 LOGGER.info("password is -",System.getenv("Bucket_Name"));
 
 Map<String,String> pair = System.getenv();
-LOGGER.info("BucketName",pair.get("Bucket_Name"));
+LOGGER.info("System variables",System.getenv());
+LOGGER.info("BucketName",System.getenv().get("Bucket_Name"));
 LOGGER.info("BucketName",pair.get("key"));
 
 
 LOGGER.info("this is great");
 
 System.out.println(num.get());
-System.out.println(env.getProperty("usrname"));
-System.out.println(env.getProperty("pass"));
+//System.out.println(env.getProperty("usrname"));
+//System.out.println(env.getProperty("pass"));
 
 //uploadFileToS3();
 return new ResponseEntity<String>("test",HttpStatus.OK);
