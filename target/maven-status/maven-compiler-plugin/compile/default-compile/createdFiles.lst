@@ -1,3 +1,4 @@
+com/docker/controller/Main.class
 com/docker/lambda/LambdaAPIHandler.class
 com/docker/controller/MicroServiceController.class
 com/docker/entity/Request.class

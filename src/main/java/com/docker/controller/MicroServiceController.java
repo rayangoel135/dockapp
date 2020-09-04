@@ -32,8 +32,6 @@ public static final Logger LOGGER = org.apache.logging.log4j.LogManager.getLogge
 private Environment env;
 //@Qualifier("docker")
 //private Properties dockerProperties; 
-@Value("${Bucket_Name}")
-private String bucketName;
 //@Scheduled(fixedRate = 5000)
 @RequestMapping(value="/dockertest",method = RequestMethod.GET)
 public ResponseEntity<String> testDockerService() {
@@ -48,7 +46,6 @@ LOGGER.info("password is -",System.getenv("Bucket_Name"));
 LOGGER.info("System variables",System.getenv());
 LOGGER.info("BucketName",System.getenv().get("Bucket_Name"));
 LOGGER.info("env bucketname",env.getProperty("Bucket_Name"));
-LOGGER.info("value bucketname",bucketName);
 
 
 
