@@ -41,8 +41,9 @@ Optional<Integer> num = Arrays.asList(1,2,3,4).stream().max((a,b)->  {
 	if(a.compareTo(b) == 0) return 0;
 	else return -1;
 });
-
-LOGGER.info("System variables",System.getenv());
+System.out.println(System.getenv());
+System.out.println(System.getenv().get("Bucket_Name"));
+LOGGER.info(System.getenv());
 LOGGER.info("BucketName",System.getenv().get("Bucket_Name"));
 LOGGER.info("env bucketname",env.getProperty("Bucket_Name"));
 
