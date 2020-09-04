@@ -43,11 +43,12 @@ public Properties getProperties() {
 	return prop;	
 }
 */
-
+/*
 @Bean
 public static PropertySourcesPlaceholderConfigurer propertysourceplaceholder() {
 return new 	PropertySourcesPlaceholderConfigurer();
 }
+*/
 }
 
 

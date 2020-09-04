@@ -41,8 +41,7 @@ Optional<Integer> num = Arrays.asList(1,2,3,4).stream().max((a,b)->  {
 	if(a.compareTo(b) == 0) return 0;
 	else return -1;
 });
-LOGGER.info("username is -",System.getenv("key"));
-LOGGER.info("password is -",System.getenv("Bucket_Name"));
+
 LOGGER.info("System variables",System.getenv());
 LOGGER.info("BucketName",System.getenv().get("Bucket_Name"));
 LOGGER.info("env bucketname",env.getProperty("Bucket_Name"));
