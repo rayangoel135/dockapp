@@ -11,6 +11,7 @@ Parameters:
   Default: Mybucketkey 
   
 Globals:
+ Function:
   Environment:
    Variables:
     Bucket_Name: !Ref Name
