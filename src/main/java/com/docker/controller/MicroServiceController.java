@@ -9,6 +9,7 @@ import java.util.logging.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
@@ -27,11 +28,12 @@ import com.docker.util.S3Util;
 public class MicroServiceController {
 public static final Logger LOGGER = org.apache.logging.log4j.LogManager.getLogger(MicroServiceController.class);
 
-//@Autowired
-//private Environment env;
+@Autowired
+private Environment env;
 //@Qualifier("docker")
 //private Properties dockerProperties; 
-
+@Value("${Bucket_Name}")
+private String bucketName;
 //@Scheduled(fixedRate = 5000)
 @RequestMapping(value="/dockertest",method = RequestMethod.GET)
 public ResponseEntity<String> testDockerService() {
@@ -43,11 +45,11 @@ Optional<Integer> num = Arrays.asList(1,2,3,4).stream().max((a,b)->  {
 });
 LOGGER.info("username is -",System.getenv("key"));
 LOGGER.info("password is -",System.getenv("Bucket_Name"));
-
-Map<String,String> pair = System.getenv();
 LOGGER.info("System variables",System.getenv());
 LOGGER.info("BucketName",System.getenv().get("Bucket_Name"));
-LOGGER.info("BucketName",pair.get("key"));
+LOGGER.info("env bucketname",env.getProperty("Bucket_Name"));
+LOGGER.info("value bucketname",bucketName);
+
 
 
 LOGGER.info("this is great");
