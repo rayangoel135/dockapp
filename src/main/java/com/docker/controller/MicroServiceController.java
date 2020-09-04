@@ -1,6 +1,7 @@
 package com.docker.controller;
 
 import java.util.Arrays;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Properties;
 import java.util.logging.LogManager;
@@ -42,7 +43,12 @@ Optional<Integer> num = Arrays.asList(1,2,3,4).stream().max((a,b)->  {
 });
 LOGGER.info("username is -",System.getenv("key"));
 LOGGER.info("password is -",System.getenv("Bucket_Name"));
-LOGGER.info(System.getenv());
+
+Map<String,String> pair = System.getenv();
+LOGGER.info("BucketName",pair.get("Bucket_Name"));
+LOGGER.info("BucketName",pair.get("key"));
+
+
 LOGGER.info("this is great");
 
 System.out.println(num.get());

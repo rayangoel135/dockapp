@@ -95,7 +95,7 @@
 		
 	</dependencies>
 	
-	<profiles>
+<!-- 	<profiles>
         <profile>
             <id>dev</id>
             <properties>
@@ -111,7 +111,7 @@
                 <activatedProperties>prod</activatedProperties>
             </properties>
         </profile>
-    </profiles>
+    </profiles> -->
 
 	<build>
 		<plugins>
