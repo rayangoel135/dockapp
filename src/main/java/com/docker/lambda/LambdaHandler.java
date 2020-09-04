@@ -1,5 +1,7 @@
 package com.docker.lambda;
 
+import java.util.Collections;
+
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -31,7 +33,7 @@ public class LambdaHandler implements RequestHandler<Void, Response>{
 		
 
 		controller.testDockerService();
-		return new Response("success");
+		return new Response(200,Collections.singletonMap("test","success"),"We rock");
 	}
 	/*
 	@Scheduled(fixedRate = 5000)

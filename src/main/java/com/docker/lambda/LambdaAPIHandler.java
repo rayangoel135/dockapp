@@ -1,5 +1,7 @@
 package com.docker.lambda;
 
+import java.util.Collections;
+
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +17,8 @@ public class LambdaAPIHandler implements RequestHandler<Void, com.docker.entity.
 	public Response handleRequest(Void input, Context context) {
 		// TODO Auto-generated method stub
 		//DockerServiceApplication.main(new String[] {});
-		System.out.println("bucket name is " + System.getProperty("Bucket_Name"));
-		return new Response("BucketName" + System.getenv("Bucket_Name"));
+		System.out.println("bucket name is " + System.getenv("Bucket_Name"));
+		return new Response(200,Collections.singletonMap("test","success"),"We rock");
 	}
 
 }
