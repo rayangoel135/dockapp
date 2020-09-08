@@ -1,5 +1,11 @@
 package com.docker.controller;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Optional;
@@ -43,14 +49,24 @@ Optional<Integer> num = Arrays.asList(1,2,3,4).stream().max((a,b)->  {
 });
 System.out.println(System.getenv());
 System.out.println(System.getenv().get("Bucket_Name"));
-LOGGER.info(System.getenv());
-LOGGER.info("BucketName",System.getenv().get("Bucket_Name"));
-LOGGER.info("env bucketname",env.getProperty("Bucket_Name"));
+LOGGER.info("BucketName - {}",System.getenv().get("Bucket_Name"));
+LOGGER.info("env bucketname - {}",env.getProperty("Bucket_Name"));
 
-
-
+try {
+File f	= File.createTempFile("temp",".txt");
+f.deleteOnExit();
+BufferedWriter writer = Files.newBufferedWriter(Paths.get(f.getAbsolutePath()));
+writer.write("test lambda function hurray");
+writer.close();
+BufferedReader reader = Files.newBufferedReader(Paths.get(f.getAbsolutePath()));
+reader.lines().forEach(line -> LOGGER.info("Line contents are {}",line));
+reader.close();
+System.out.println("file absolute path is" +  f.getAbsolutePath());
+} catch (IOException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
 LOGGER.info("this is great");
-
 System.out.println(num.get());
 //System.out.println(env.getProperty("usrname"));
 //System.out.println(env.getProperty("pass"));
