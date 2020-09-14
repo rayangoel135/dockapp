@@ -91,7 +91,6 @@
     <artifactId>aws-java-sdk-logs</artifactId>
     <version>1.11.848</version>
 </dependency>
-
 		
 	</dependencies>
 	
